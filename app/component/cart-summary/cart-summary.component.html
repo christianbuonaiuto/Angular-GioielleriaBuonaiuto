@@ -1,0 +1,11 @@
+<section class="cover">
+  <div class="cover_caption_filter"></div>
+  <div class="cover_caption">
+    <div class="cover_caption_copy">
+      <h1>CARRELLO</h1>
+    </div>
+  </div>
+</section>
+
+<app-cart-summary-window class="window" *ngIf="!paidFor" (paidFor)="eventPaidFor($event)"></app-cart-summary-window>
+<app-cart-order-confirmed class="window" *ngIf="paidFor" [orderConfirmed]="order"></app-cart-order-confirmed>

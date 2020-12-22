@@ -1,0 +1,13 @@
+.tableOrder{ width: 100%;}
+.tableOrder th,td{border-top: 1px solid grey; padding: 10px;}
+.tableOrder tr:hover {background-color: #dfdbdb;}
+.icon-order-details{width: 30px;border-radius: 8px;}
+
+.button{margin: 31px;
+  padding: 1%;
+  line-height: 20px;
+  border: 1px solid black;
+  letter-spacing: 2px;
+  width: 18%;
+  font-size: 17px;}
+.button:hover{background: #969696;}

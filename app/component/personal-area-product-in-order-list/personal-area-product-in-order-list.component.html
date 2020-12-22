@@ -1,0 +1,26 @@
+<h2>LISTA ORDINI EFFETTUATI - ID ORDINE: {{orderId}}</h2>
+<table class="tableProductInOrder">
+  <thead>
+    <tr>
+      <th style="width: 60px;">n.</th>
+      <th style="width: 60px;" scope="row">Immagine prodotto</th>
+      <th scope="row">Prodotto</th>
+      <th style="width: 60px;" scope="row">Quantità acquistata</th>
+      <th style="width: 120px;" scope="row">Prezzo per singolo prodotto</th>
+      <th scope="row">Scheda prodotto</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let productInOrder of listProductInOrder">
+      <td>{{number()}}</td>
+      <td><img src={{productInOrder.product.img}} onerror="this.onerror=null; this.src='../assets/err_img/not_available.jpg';" class="product-img"></td>
+      <td><b>{{productInOrder.product.model}} {{productInOrder.product.brand}} - {{productInOrder.product.category}}</b></td>
+      <td>{{productInOrder.quantity}}</td>
+      <td>{{productInOrder.price}} €</td>
+      <td style="width: 40px;"><a (click)="goToProduct(productInOrder.product.code)"><img class="icon-product-details" src="../assets/personal-area-img/product-details-img.png" onerror="this.onerror=null; this.src='../assets/err_img/not_available.jpg';"></a></td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="button_submit" type="submit" (click)="returnToBack()">Torna alla lista degli ordini</button>
+

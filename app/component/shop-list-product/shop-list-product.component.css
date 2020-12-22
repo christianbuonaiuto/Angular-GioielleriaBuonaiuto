@@ -1,0 +1,23 @@
+:host /deep/ .mat-grid-tile .mat-figure{display: inline-block;
+  margin-top: 0%;
+  margin-bottom: 0%;
+  margin-right: 4%;
+  margin-left: 4%;
+  border: 2px solid black;
+  border-radius: 8px;}
+:host /deep/ .mat-grid-tile .mat-grid-tile-header, .mat-grid-tile .mat-grid-tile-footer{display: grid; font-size: 20px;}
+
+.product:hover{box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); border-radius: 4px;}
+
+
+.product_img{width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border-bottom: 2px solid #666;
+  }
+.product_copy{height: 50%;;padding: 5px 20px;}
+
+/***
+BUTTON
+***/
+.product_shop{width: 50px; float: right;border-style: none;}

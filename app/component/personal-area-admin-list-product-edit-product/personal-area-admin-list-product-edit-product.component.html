@@ -1,0 +1,59 @@
+<h2>MODIFICA PRODOTTO {{product.code}}</h2>
+
+<div [formGroup]='editProductForm'>
+  <table class="tableProduct">
+    <thead>
+      <tr>
+        <th scope="row">Attributo</th>
+        <th scope="row"></th>
+      </tr>
+      <tr>
+        <th scope="row"></th>
+        <th scope="row"></th>
+      </tr>
+    </thead>
+    <tbody class="tableProduct_tbody">
+      <tr>
+        <td>Modello</td>
+        <td>{{product.model}}</td>
+      </tr>
+      <tr>
+        <td>Marca</td>
+        <td>{{product.brand}}</td>
+      </tr>
+      <tr>
+        <td>Descrizione</td>
+        <td>
+          <label>
+            <input type="text" formControlName="descriptionProduct" size="60">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Categoria</td>
+        <td>{{product.category}}</td>
+      </tr>
+      <tr>
+        <td>Quantità</td>
+        <td>
+          <label>
+            <input type="number" min="0" formControlName="quantityProduct" size="3">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Prezzo</td>
+        <td>
+          <label>
+            <input class="input_price" type="number" formControlName="priceProduct" size="5"> €
+          </label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="button_submit" type="submit" (click)="edit()">Modifica Prodotto</button>
+
+  <button class="button_submit" type="submit" (click)="returnToBack()">Torna alla lista dei prodotti</button>
+
+</div>

@@ -1,0 +1,48 @@
+
+<header class="header clearfix">
+  <img src="../assets/home_img/icona.png" class="header_logo_img">
+  <a href="" class="header_logo" style="text-decoration: none;">BUONAIUTO SHOP</a>
+  <div class="header_icon-cart">
+    <img src="../assets/home_img/utente_img.png" class="header_icon-cart-img">
+
+  </div>
+  <ul class="header_menu">
+    <li class="header_menu_item" [routerLink]="'/'">HOME</li>
+    <li class="header_menu_item" [routerLink]="'/shop'">SHOP</li>
+    <li class="header_menu_item" [routerLink]="'/brand'">BRAND</li>
+    <li class="header_menu_item" [routerLink]="'/contact'">CONTATTI</li>
+  </ul>
+  <ul class="header_menu_icon animate" style="text-align: right; overflow: hidden;">
+    <li class="header_menu_icon_item" *ngIf="isAuthenticated" [routerLink]="'/personal-area'">
+      🧑 Area Personale
+    </li>
+    <li class="header_menu_icon_item" *ngIf="isAuthenticated" [routerLink]="'/cart-summary'">
+      🛒 Carrello
+    </li>
+    <li class="header_menu_icon_item" >
+      <a *ngIf="!isAuthenticated" (click)="oktaAuth.loginRedirect()">🚪 Login</a>
+      <a *ngIf="isAuthenticated" (click)="oktaAuth.logout()">🚪 Logout - {{name}}</a>
+    </li>
+  </ul>
+
+</header>
+
+<router-outlet></router-outlet>
+
+<section class="banner clearfix">
+    <div class="banner_text">
+     <h3>Buonaiuto</h3>
+     <h4>Gioielleria</h4>
+    <p>Realtà storica a gestione familiare, la Gioielleria Buonaiuto nata nel 1990, ha sapientemente coniugato l’esperienza alle necessità di cambiamento dei giorni nostri.</p>
+    <a href="http://www.instagram.com/goodhelp_c/"><img class="img_social_insta" src="../assets/home_img/social_insta.png" alt="insta.com" /></a>
+    <a href="http://www.facebook.com/christian.buonaiuto.5/"><img class="img_social_facebook" src="../assets/home_img/social_facebook.png" alt="facebook" /></a>
+    <p>Copiright - 2020 GioielleriaBuonaiuto.net </p>
+    </div>
+</section>
+<footer class="footer">
+  <p>
+    www.gioielleriabuonaiuto.it utilizza i cookies per offrirti un'esperienza di navigazione migliore. Usando il nostro servizio accetti l'impiego di cookie in accordo con la nostra cookie policy.
+    <a target="_blank" href="http://nibirumail.com/cookies/" style="color: rgb(255, 255, 255); text-decoration: underline;">Scoprine di più</a>
+  </p>
+</footer>
+

@@ -1,0 +1,20 @@
+.button_login{border: none;
+  font-size: 25px;
+  padding: 1%;
+  /* border-width: 2px; */
+  line-height: 18px;
+  border-style: solid;
+  border-color: black;
+  letter-spacing: 2px;
+  width: 18%;}
+.button_login:hover{background: #969696;}
+
+.window{
+  background-color: #f3f3f3;
+              max-width: 97%;
+              margin: 30px auto;
+              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+              text-align: center;
+              color: #666;
+              padding: 15px;
+            }

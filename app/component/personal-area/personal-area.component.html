@@ -1,0 +1,51 @@
+<div class="window">
+  <!--LOADING-->
+  <div *ngIf="!isLoad" class="loading">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    <br/>
+    <h2>Caricamento...</h2>
+  </div>
+
+  <!--POSTLOADING-->
+  <div *ngIf="isLoad">
+
+    <h1 style="text-transform: uppercase">Area personale di {{emailUserOkta}}</h1>
+
+    <div class="personal_area clearfix" *ngIf="isAuthenticated">
+
+      <mat-list class="list" #shoes>
+        <mat-list-item>Benvenuto !</mat-list-item>
+
+        <mat-list-item class="single_item" (click)='changePage(1)'>Profilo</mat-list-item>
+        <mat-list-item class="single_item" (click)='changePage(2)'>I miei ordini</mat-list-item>
+        <mat-list-item class="single_item" (click)='changePage(3)'>I miei prodotti</mat-list-item>
+        <mat-list-item class="single_item_adm" *ngIf="isAdmin">AMMINISTRAZIONE</mat-list-item>
+        <mat-list-item class="single_item" *ngIf="isAdmin" (click)='changePage(4)'>Lista prodotti</mat-list-item>
+        <mat-list-item class="single_item" *ngIf="isAdmin" (click)='changePage(6)'>Aggiungi prodotto</mat-list-item>
+        <mat-list-item class="single_item" *ngIf="isAdmin" (click)='changePage(5)'>Lista Ordini</mat-list-item>
+        <mat-list-item class="single_item" *ngIf="isAdmin" (click)='changePage(7)'>Lista Utenti</mat-list-item>
+      </mat-list>
+
+      <div class="list_window">
+        <app-personal-area-profile *ngIf="page==1" [emailUser]="emailUserOkta"></app-personal-area-profile>
+        <app-personal-area-order-list *ngIf="page==2" [emailUser]="emailUserOkta" (order)="goToProductInOrderListByEmail($event)"></app-personal-area-order-list>
+        <app-personal-area-all-product-in-order-by-user *ngIf="page==3" [emailUser]="emailUserOkta" (codeProduct)="goToProduct($event)"></app-personal-area-all-product-in-order-by-user>
+        <!--ADMIN-->
+        <app-personal-area-admin-list-product *ngIf="page==4" (codeProduct)="goToEditProduct($event)"></app-personal-area-admin-list-product>
+        <app-personal-area-admin-list-order *ngIf="page==5" [emailUser]="emailUserOktaForAdmin" (order)="goToProductInOrderList($event)" (backListUser)="goToListUser()"></app-personal-area-admin-list-order>
+        <app-personal-area-admin-add-product *ngIf="page==6"></app-personal-area-admin-add-product>
+        <app-personal-area-admin-list-user *ngIf="page == 7" [emailInWeb]="emailUserOkta" (viewUser)="goToUser($event)" (viewOrder)="goToOrder($event)"></app-personal-area-admin-list-user>
+
+        <!--navigation not visibility by user-->
+        <app-personal-area-admin-view-profile *ngIf="page==96" [emailUser]="emailUserOktaForAdmin" (changePageViewProfile)="changePage(7)"></app-personal-area-admin-view-profile>
+        <app-personal-area-admin-list-product-edit-product *ngIf="page==97" [codeProductView]="codeProduct" (returnToListProduct)="changePage(4)"></app-personal-area-admin-list-product-edit-product>
+        <app-show-product *ngIf="page==98" [codeProductView]="codeProduct" (returnToListProduct)="changePage(99)"></app-show-product>
+        <app-personal-area-product-in-order-list *ngIf="page==99" [orderId]="idOrder" [admin]="totalOrder" (codeProduct)="goToProduct($event)" (returnToListProduct)="changePage($event)"></app-personal-area-product-in-order-list>
+
+      </div>
+    </div>
+</div>
+</div>
+
+
+

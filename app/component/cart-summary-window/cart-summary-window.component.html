@@ -1,0 +1,69 @@
+<div class="window">
+
+  <h3>GIOIELLERIA BUONAIUTO</h3>
+  <h1 style="letter-spacing: 1px;">RIEPILOGO CARRELLO</h1>
+  <!--LOADING-->
+  <div *ngIf="!isLoad" class="loading">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    <br/>
+    <h2>Caricamento...</h2>
+  </div>
+
+  <!--POSTLOADING-->
+  <div *ngIf="isLoad">
+    <table class="tableCart">
+      <thead>
+        <tr>
+          <th style="width: 40px" scope="row"></th>
+          <th style="width: 60px;" scope="row">Immagine prodotto</th>
+          <th scope="row">Prodotto</th>
+          <th scope="row">Codice Prodotto</th>
+          <th scope="row">Quantità</th>
+          <th scope="row">Subtotale</th>
+          <th style="width: 40px;" scope="row">Scheda Prodotto</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let productInCart of productsInCart">
+          <td style="width: 40px"><button class="product_delete" (click)="deleteOne(productInCart.ido, productInCart.product.model , true)"><b>X</b></button></td>
+          <td style="width: 60px;"><img src={{productInCart.product.img}} onerror="this.onerror=null; this.src='../assets/err_img/not_available.jpg';" class="product-img"></td>
+          <td><b>{{productInCart.product.model}} {{productInCart.product.brand}}</b></td>
+          <td>{{productInCart.product.code}}</td>
+          <td>{{productInCart.quantity}}</td>
+          <td>{{subtotal(productInCart.quantity,productInCart.product.price)}} €</td>
+          <td style="width: 40px;"><a [routerLink]="'/show-product'" [queryParams]="{codeProduct:productInCart.product.code}"><img class="icon-product-details" src="../assets/cart-summary-img/product-details-img.png" onerror="this.onerror=null; this.src='../assets/err_img/not_available.jpg';"></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="backShop">
+    <button type="submit" [routerLink]="'/shop'"><h3>RITORNA ALLO SHOP</h3></button>
+  </div>
+
+  <label class="label-comment" [formGroup]="commentForm">
+    Commento:
+    <textarea formControlName="commentOrder" class="input-comment"></textarea>
+  </label>
+
+  <div class="totalCart">
+    <h3><b>TOTALE CARRELLO</b></h3>
+    <table class="totalCart_table">
+      <tbody>
+        <tr>
+          <td class="td1"><b>SUBTOTALE</b></td>
+          <td class="td2">€ {{totalPriceProducts()}}</td>
+        </tr>
+        <tr>
+          <td class="td1"><b>SPEDIZIONE</b></td>
+          <td class="td2" *ngIf="shipment != 0">€ {{shipment}}</td><td class="td2" *ngIf="shipment == 0"><b>GRATUITA</b></td>
+        </tr>
+        <tr>
+          <td class="td1"><b>TOTALE</b></td>
+          <td class="td2"><b>€ {{total()}}</b></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="button_paypal" #paypal></div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="header"><h1>Carrello</h1></div>
+
+<div *ngIf="listProductInCart.length > 0" class="products_cart">
+  <ng-container *ngFor="let product of listProductInCart">
+    <div class="product_cart clearfix">
+
+      <img src={{product.product.img}} onerror="this.onerror=null; this.src='../assets/err_img/not_available.jpg';" class="product_cart-img">
+
+      <div class="product_cart-copy">
+          <h3> categoria </h3> <button class="product_cart-delete" (click)="removeProduct(product)" ><b>X</b></button>
+          <h3>{{product.product.model}} </h3>
+          <h3>{{product.product.brand}} </h3>
+          <h3 style="font-style: italic; color: #ffd000;"> €{{product.product.price}}</h3>
+          <h3> x {{product.quantity}} <div *ngIf="product.quantity === product.product.quantity" style="float: right;font-size: small; font-style: italic;">Quantità massima !</div> </h3>
+        <br/>
+          <button class="product_cart-button" (click)="removeProductOneQty(product)">Rimuovi</button>
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="product_cart-checkout">
+  <h3 style="float:left">Prodotti selezionati: <b style="font-style: italic;">{{totalProduct()}}</b></h3>
+
+  <h3>Totale: <b>€</b> <b style="font-style: italic;"> {{totalPriceProducts()}}</b></h3>
+
+  <button class="button_checkout" [routerLink]="'/cart-summary'" >CHECKOUT</button>
+
+  </div>
+</div>
+
+<h3 *ngIf="listProductInCart.length <= 0"><br/>Nessun prodotto presente nel carrello.</h3>

@@ -1,0 +1,15 @@
+<div class="categories">
+<h1 style="letter-spacing: 1px;">CATEGORIE</h1>
+<ng-container>
+  <li style="text-decoration: none; margin: 0 0 3px 20px;text-align: initial;" *ngFor="let category of categories" (click)="viewByCategory(category)">
+{{category}}
+  </li>
+</ng-container>
+<br/><br/>
+<h1 style="letter-spacing: 1px;">MARCHE</h1>
+<ng-container>
+  <li style="text-decoration: none; margin: 0 0 3px 20px;text-align: initial;" *ngFor="let brand of brands" (click)="viewByBrand(brand)">
+{{brand}}
+  </li>
+</ng-container>
+</div>

@@ -1,0 +1,86 @@
+<h2>AGGIUNGI UN NUOVO PRODOTTO</h2>
+
+<div [formGroup]='addProductForm'>
+  <table class="tableProduct">
+    <thead>
+      <tr>
+        <th scope="row">Attributo Prodotto</th>
+        <th scope="row"></th>
+      </tr>
+      <tr>
+        <th scope="row"></th>
+        <th scope="row"></th>
+      </tr>
+    </thead>
+    <tbody class="tableProduct_tbody">
+      <tr>
+        <td>Codice</td>
+        <td>
+          <label>*
+            <input type="text" formControlName="codeProduct">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Modello</td>
+        <td>
+          <label>*
+            <input type="text" formControlName="modelProduct">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Marca</td>
+        <td>
+          <label>*
+            <input type="text" formControlName="brandProduct">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Descrizione</td>
+        <td>
+          <label>
+            <input type="text" formControlName="descriptionProduct" size="60">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Categoria</td>
+        <td>*
+          <select class="select_order" aria-label="category" formControlName="categoryProduct">
+            <option value="Bracciale Donna">Bracciale Donna</option>
+            <option value="Bracciale Uomo">Bracciale Uomo</option>
+            <option value="Orologio Donna">Orologio Donna</option>
+            <option value="Orologio Uomo">Orologio Uomo</option>
+            <option value="Collana Donna">Collana Donna</option>
+            <option value="Collana Uomo">Collana Uomo</option>
+            <option value="Orecchini Donna">Orecchini Donna</option>
+            <option value="Orecchini Uomo">Orecchini Uomo</option>
+            <option value="Anelli">Anelli</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Quantità</td>
+        <td>
+          <label>*
+            <input type="number" min="0" formControlName="quantityProduct" size="3">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Prezzo</td>
+        <td>
+          <label>*
+            <input class="input_price" type="number" formControlName="priceProduct" size="5"> €
+          </label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="button_submit" type="submit" (click)="add()" [disabled]="!addProductForm.valid" >Aggiungi Prodotto</button>
+  <h4 *ngIf="!addProductForm.valid">* CAMPI OBBLIGATORI</h4>
+
+</div>

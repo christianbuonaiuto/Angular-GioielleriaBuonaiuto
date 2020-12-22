@@ -1,0 +1,45 @@
+<section class="cover" *ngIf="param != null">
+  <div class="cover_caption_filter"></div>
+  <div class="cover_caption">
+    <div class="cover_caption_copy">
+      <h1>"Un gioiello dura più di un vestito, e non dovete preoccuparvi troppo di eventualità quali cambio taglia o colore di capelli."</h1>
+    </div>
+  </div>
+</section>
+
+<div class="window clearfix" *ngIf="param != null">
+  <h3>GIOIELLERIA BUONAIUTO</h3>
+  <div class="product">
+  <img class="product_img" onerror="this.onerror=null; this.src='../assets/err_img/not_available.jpg';"  src={{product.img}} />
+  <div class="product_text">
+  <h1>{{product.model}}</h1>
+  <h1>{{product.brand}}</h1>
+  <h3>Prezzo: {{product.price}}€</h3>
+  <h3>Categoria: {{product.category}}</h3>
+  <h3>Disponibilità: {{product.quantity}}</h3>
+  <h3>Codice:<b> {{product.code}}</b></h3>
+  <h3>Descrizione:</h3>
+  <h3 style="font-size: 15px;">{{product.description}}</h3>
+</div>
+</div>
+
+</div>
+
+<div class="product" *ngIf="param == null">
+  <img class="product_img" style="width: 40%;"  onerror="this.onerror=null; this.src='../assets/err_img/not_available.jpg';"  src={{product.img}} />
+  <div class="product_text" style="width: 60%;" >
+  <h1>{{product.model}}</h1>
+  <h1>{{product.brand}}</h1>
+  <h3>Prezzo: {{product.price}}€</h3>
+  <h3>Categoria: {{product.category}}</h3>
+  <h3>Codice:<b> {{product.code}}</b></h3>
+  <h3>Descrizione:</h3>
+  <h3 style="font-size: 15px;">{{product.description}}</h3>
+</div>
+</div>
+
+<div class="button_back" >
+  <button *ngIf="param == null" class="button_submit" type="submit" (click)="returnToBack()">Torna alla lista dei prodotti</button>
+
+  <button *ngIf="param != null" onClick="history.go(-1);return true;">RITORNA ALLA PAGINA PRECEDENTE</button>
+</div>

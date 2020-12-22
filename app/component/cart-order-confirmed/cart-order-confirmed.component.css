@@ -1,0 +1,8 @@
+.button{margin: 31px;
+  padding: 1%;
+  line-height: 20px;
+  border: 1px solid black;
+  letter-spacing: 2px;
+  width: 18%;
+  font-size: 17px;}
+.button:hover{background: #969696;}

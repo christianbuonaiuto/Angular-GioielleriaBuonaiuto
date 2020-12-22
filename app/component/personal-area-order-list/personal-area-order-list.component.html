@@ -1,0 +1,28 @@
+<h2>LISTA ORDINI EFFETTUATI DA TE</h2>
+<h5>* ID ordine corrisponde ad ID Paypal</h5>
+<div *ngIf="listOrder.length != 0">
+  <table class="tableOrder">
+    <thead>
+      <tr>
+        <th style="width: 60px" scope="row">ID</th>
+        <th scope="row">Data acquisto</th>
+        <th scope="row">Prezzo totale ordine</th>
+        <th>Commento</th>
+        <th  style="width: 150px;" scope="row">Lista prodotti ordini</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let order of listOrder | paginate: {itemsPerPage: numberViewOrder, currentPage: pageIndex}">
+        <td>{{order.ido}}</td>
+        <td>{{order.datePurchase | date:"dd-MM-yyyy HH:mm:ss"}}</td>
+        <td>{{order.amount}} €</td>
+        <td>{{order.comment}}</td>
+        <td><a (click)="goToProductInOrderList(order.ido)"><img class="icon-order-details" src="../assets/personal-area-img/product-details-img.png" onerror="this.onerror=null; this.src='../assets/err_img/not_available.jpg';"></a></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <pagination-controls (pageChange)="pageIndex = $event"></pagination-controls>
+</div>
+<h3 *ngIf="listOrder.length == 0">NESSUN ORDINE EFFETTUATO</h3>

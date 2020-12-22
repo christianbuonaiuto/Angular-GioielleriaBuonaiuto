@@ -1,0 +1,4 @@
+.tableUsers{ width: 100%;}
+.tableUsers th,td{border-top: 1px solid grey; padding: 10px;}
+.tableUsers tr:hover {background-color: #dfdbdb;}
+.icon-user-details{width: 30px;border-radius: 8px;}

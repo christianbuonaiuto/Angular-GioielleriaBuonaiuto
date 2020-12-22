@@ -1,0 +1,31 @@
+<h2>LISTA PRODOTTI</h2>
+<table class="tableProduct">
+  <thead>
+    <tr>
+      <th scope="row">Codice</th>
+      <th scope="row">Immagine</th>
+      <th scope="row">Modello - Brand</th>
+      <th scope="row">Descrizione</th>
+      <th scope="row">Categoria</th>
+      <th scope="row" style="width: 95px;">Ultima modifica</th>
+      <th scope="row" style="width: 30px;">Quantità disp.</th>
+      <th scope="row">Prezzo</th>
+      <th  style="width: 50px;" scope="row">Modifica Prodotto</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let product of listProduct | paginate: {itemsPerPage: numberViewProduct, currentPage: pageIndex}">
+      <td>{{product.code}}</td>
+      <td><img src={{product.img}} onerror="this.onerror=null; this.src='../assets/err_img/not_available.jpg';" class="product-img"></td>
+      <td>{{product.model}} - {{product.brand}}</td>
+      <td>{{product.description}}</td>
+      <td>{{product.category}}</td>
+      <td>{{product.lastModify | date:"dd-MM-yyyy HH:mm:ss"}}</td>
+      <td>{{product.quantity}} <ng-container *ngIf="product.quantity == 0">/ ESAURITO</ng-container></td>
+      <td>{{product.price}} €</td>
+      <td><a (click)="goToEditProduct(product.code)"><img class="icon-product-details" src="../assets/personal-area-img/product-modify-img.png" onerror="this.onerror=null; this.src='../assets/err_img/not_available.jpg';"></a></td>
+    </tr>
+  </tbody>
+</table>
+
+<pagination-controls (pageChange)="pageIndex = $event"></pagination-controls>

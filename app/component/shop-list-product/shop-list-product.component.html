@@ -1,0 +1,24 @@
+<div *ngIf="listProduct.length == 0"><h1>PRODOTTI NON DISPONIBILI</h1></div>
+
+<mat-grid-list cols="3" rowHeight="0.6:1">
+  <mat-grid-tile class="product" *ngFor ="let product of listProduct | paginate: {itemsPerPage: numberViewProduct, currentPage: pageIndex}">
+
+    <mat-grid-tile-header>{{product.model}} {{product.brand}}</mat-grid-tile-header>
+
+    <img class="product_img"  onerror="this.onerror=null; this.src='../assets/err_img/not_available.jpg';"  src={{product.img}} />
+
+    <div class="product_copy">
+      <h4>Code: {{product.code}}</h4>
+
+      <p><a [routerLink]="'/show-product'" [queryParams]="{codeProduct:product.code}">Scheda Prodotto</a></p>
+
+      <p *ngIf="product.quantity > 0">Quantità: {{product.quantity}}</p>
+
+      <h4>Prezzo : {{product.price}} €</h4>
+
+      <button (click)="addProduct(product)" type="button" class="button_shop">AGGIUNGI</button>
+  </div>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<pagination-controls (pageChange)="pageIndex = $event"></pagination-controls>

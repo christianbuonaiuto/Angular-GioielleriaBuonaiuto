@@ -1,0 +1,36 @@
+<h2>ELENCO UTENTI</h2>
+<table class="tableUsers">
+  <thead>
+    <tr>
+      <th scope="row">Email</th>
+      <th scope="row">Nome</th>
+      <th scope="row">Cognome</th>
+      <th style="width: 70px;" scope="row">Dettagli/Modifica utente</th>
+      <th style="width: 130px;" scope="row">Lista ordini</th>
+      <th>Ruolo</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let user of listUser | paginate: {itemsPerPage: numberViewUsers, currentPage: pageIndex}">
+      <td>{{user.email}}</td>
+      <td>{{user.firstname}}</td>
+      <td>{{user.surname}}</td>
+      <td>
+        <a (click)="passToPageUser(user.email)" *ngIf="emailInWeb != user.email">
+          <img class="icon-user-details" src="../assets/personal-area-img/product-details-img.png" onerror="this.onerror=null; this.src='../assets/err_img/not_available.jpg';">
+        </a>
+        <img *ngIf="emailInWeb == user.email" class="icon-user-details" src="../assets/personal-area-img/is-her-img.png">
+      </td>
+      <td>
+        <a (click)="passToPageOrder(user.email)"><img class="icon-user-details" src="../assets/personal-area-img/product-details-img.png" onerror="this.onerror=null; this.src='../assets/err_img/not_available.jpg';">
+        </a>
+      </td>
+      <td>
+        <h3 *ngIf="user.admin" style="margin-top: 10px;">⭐ Amministratore</h3>
+        <h3 *ngIf="!user.admin" style="margin-top: 10px;">Utente</h3>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<pagination-controls (pageChange)="pageIndex = $event"></pagination-controls>

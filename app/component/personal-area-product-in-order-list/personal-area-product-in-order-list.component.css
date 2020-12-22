@@ -1,0 +1,13 @@
+.tableProductInOrder{ width: 100%;}
+.tableProductInOrder th,td{border-top: 1px solid grey; padding: 10px;}
+.tableProductInOrder tr:hover {background-color: #dfdbdb;}
+.icon-product-details{width: 30px;border-radius: 8px;}
+.product-img{width: 50px;border-radius: 8px;}
+.button_submit{margin: 31px;
+  padding: 1%;
+  line-height: 20px;
+  border: 1px solid black;
+  letter-spacing: 2px;
+  width: 18%;
+  font-size: 17px;}
+.button_submit:hover{background: #969696;}

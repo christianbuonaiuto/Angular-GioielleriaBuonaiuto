@@ -1,0 +1,28 @@
+<h2>LA TUA LISTA PRODOTTI</h2>
+<div *ngIf="listOrder.length != 0">
+  <table class="tableProductInOrder">
+    <thead>
+      <tr>
+        <th style="width: 60px;">ID ORDINE</th>
+        <th style="width: 60px;" scope="row">Immagine prodotto</th>
+        <th scope="row">Prodotto</th>
+        <th style="width: 60px;" scope="row">Quantità acquistata</th>
+        <th style="width: 70px;" scope="row">Prezzo per singolo prodotto</th>
+        <th scope="row">Scheda prodotto</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let productInOrder of listOrder | paginate: {itemsPerPage: numberViewProductInOrder, currentPage: pageIndex}">
+        <td>{{productInOrder.ordero.ido}}</td>
+        <td><img src={{productInOrder.product.img}} onerror="this.onerror=null; this.src='../assets/err_img/not_available.jpg';" class="product-img"></td>
+        <td><b>{{productInOrder.product.model}} {{productInOrder.product.brand}} - {{productInOrder.product.category}}</b></td>
+        <td>{{productInOrder.quantity}}</td>
+        <td>{{productInOrder.price}} €</td>
+        <td style="width: 40px;"><a (click)="goToProduct(productInOrder.product.code)"><img class="icon-product-details" src="../assets/personal-area-img/product-details-img.png" onerror="this.onerror=null; this.src='../assets/err_img/not_available.jpg';"></a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <pagination-controls (pageChange)="pageIndex = $event"></pagination-controls>
+</div>
+<h3 *ngIf="listOrder.length == 0">NESSUN PRODOTTO ACQUISTATO</h3>

@@ -1,0 +1,46 @@
+<section class="cover">
+  <div class="cover_caption_filter"></div>
+  <div class="cover_caption">
+    <div class="cover_caption_copy">
+      <h1>SHOP</h1>
+    </div>
+  </div>
+</section>
+
+<div class="window">
+  <h3>GIOIELLERIA BUONAIUTO</h3>
+  <h1 style="letter-spacing: 1px;">I NOSTRI PRODOTTI</h1>
+  <h1 style="font-style: initial;" >SPEDIZIONE GRATUITA PER ORDINI SUPERIORI A <b style="color: gold;">70€</b></h1>
+
+  <!--LOADING-->
+  <div *ngIf="!isLoad" class="loading">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    <br/>
+    <h2>Caricamento...</h2>
+  </div>
+
+  <!--POSTLOADING-->
+  <div *ngIf="isLoad">
+      <header class="header clearfix">
+        <h3>Ordina per:</h3>
+        <select class="select_order" aria-label="Ordine" [(ngModel)]="selectOrderBy" (change)="changeListProduct()">
+          <option value="0">Visualizza tutti i prodotti</option>
+          <option value="1">Prezzo: dal più economico</option>
+          <option value="2">Prezzo: dal più caro</option>
+        </select>
+      </header>
+
+
+
+
+      <section class="shop clearfix">
+        <app-shop-categories class="categories" (listProductByCategory)="changeListProductByCategory($event)"></app-shop-categories>
+        <app-shop-list-product class="products" [listProduct]="products" (productAdded)="addProductToCart($event)"></app-shop-list-product>
+        <app-shop-cart class="cart" [listProductInCart]="cartProductList" (productRemoved)="removeProduct($event)"></app-shop-cart>
+      </section>
+  </div>
+
+</div>
+
+
+

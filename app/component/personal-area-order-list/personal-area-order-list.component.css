@@ -1,0 +1,4 @@
+.tableOrder{ width: 100%;}
+.tableOrder th,td{border-top: 1px solid grey; padding: 10px;}
+.tableOrder tr:hover {background-color: #dfdbdb;}
+.icon-order-details{width: 30px;border-radius: 8px;}

@@ -1,0 +1,5 @@
+.tableProductInOrder{ width: 100%;}
+.tableProductInOrder th,td{border-top: 1px solid grey; padding: 10px;}
+.tableProductInOrder tr:hover {background-color: #dfdbdb;}
+.icon-product-details{width: 30px;border-radius: 8px;}
+.product-img{width: 50px;border-radius: 8px;}

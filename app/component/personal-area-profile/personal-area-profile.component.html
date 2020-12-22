@@ -1,0 +1,89 @@
+<h2>PROFILO</h2>
+<table *ngIf="!modify" class="tableUser">
+  <thead>
+    <tr>
+      <th scope="row"></th>
+      <th scope="row"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>EMAIL</td>
+      <td>{{user.email}}</td>
+    </tr>
+    <tr>
+      <td>NOME</td>
+      <td>{{user.firstname}}</td>
+    </tr>
+    <tr>
+      <td>COGNOME</td>
+      <td>{{user.surname}}</td>
+    </tr>
+    <tr>
+      <td>NUMERO DI TELEFONO</td>
+      <td>+39{{user.phonenumber}}</td>
+    </tr>
+    <tr>
+      <td>CODICE POSTALE</td>
+      <td>{{user.postalcode}}</td>
+    </tr>
+    <tr>
+      <td>INDIRIZZO</td>
+      <td>{{user.streetaddress}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="modify" [formGroup]='editUserForm'>
+  <table class="tableUser">
+    <thead>
+      <tr>
+        <th scope="row"></th>
+        <th scope="row"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>EMAIL</td>
+        <td>{{user.email}}</td>
+      </tr>
+      <tr>
+        <td>NOME</td>
+        <td>{{user.firstname}}</td>
+      </tr>
+      <tr>
+        <td>COGNOME</td>
+        <td>{{user.surname}}</td>
+      </tr>
+      <tr>
+        <td>NUMERO DI TELEFONO</td>
+        <td>
+          <label>+39
+            <input class="input_num" type="number" formControlName="phoneUser">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>CODICE POSTALE</td>
+        <td>
+          <label>
+            <input class="input_num" type="number" formControlName="postalCodeUser" size="5">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>INDIRIZZO</td>
+        <td>
+          <label>
+            <input type="text" formControlName="addressUser">
+          </label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<button class="button" *ngIf="!modify" (click)="canModify()">Modifica Profilo</button>
+<button class="button" *ngIf="modify" (click)="edit()">Modifica Profilo</button>
+
